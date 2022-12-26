@@ -16,10 +16,27 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         backgroundColor: Colors.white,
         primarySwatch: Colors.blue,
+        primaryColorLight: Colors.white,
         textTheme: TextTheme(
-            headline1 : TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.bold, fontSize: 30),
+            headline1 : TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.bold, fontSize: 40, color: Colors.black ,),
+            bodyText1 : TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.normal, fontSize: 20, color: Colors.black),
+            button: TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.normal, fontSize: 20, color: Colors.white)
         ),
-        appBarTheme: AppBarTheme(backgroundColor: Colors.blue, titleTextStyle: TextStyle(color: Colors.white)),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          shadowColor: Colors.white38,
+          iconTheme: IconThemeData(color: Colors.black54),
+          centerTitle: true,
+          elevation: 2,
+          titleTextStyle: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 22),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.blue,
+            minimumSize: Size(100,20)
+          ),
+        )
       ),
       home: IntroPage(),
     );
