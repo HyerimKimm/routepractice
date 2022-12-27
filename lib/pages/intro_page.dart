@@ -8,10 +8,11 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage('assets/images/caffee.jpg'),fit:BoxFit.cover)
-      ),
-      child: SafeArea(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/caffee.jpg'),
+                fit: BoxFit.cover)),
+        child: SafeArea(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -19,24 +20,34 @@ class IntroPage extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Center(child: Text('인트로 페이지',style: Theme.of(context).textTheme.headline1,)),
+                    Center(
+                        child: Text(
+                      '인트로 페이지',
+                      style: Theme.of(context).textTheme.headline1,
+                    )),
                   ],
                 ),
                 Center(
                   child: SizedBox(
-                    width: 200, height: 45,
+                    width: 200,
+                    height: 45,
                     child: TextButton(
-                      child: Text('로그인하기',style: Theme.of(context).textTheme.button,),
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute( builder: (context) => LoginPage() ));
+                      child: Text(
+                        '로그인하기',
+                        style: Theme.of(context).textTheme.button,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => LoginPage()));
                       },
                     ),
                   ),
                 ),
-            ],
+              ],
+            ),
           ),
-        ),
-      )
-    );
+        ));
   }
 }

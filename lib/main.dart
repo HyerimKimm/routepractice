@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:routepractice/pages/create_account_page.dart';
 import 'package:routepractice/pages/intro_page.dart';
+import 'package:routepractice/pages/login_page.dart';
+import 'package:routepractice/pages/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,7 +10,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,13 @@ class MyApp extends StatelessWidget {
           ),
         )
       ),
-      home: IntroPage(),
+      initialRoute: '/',
+      routes: {
+        '/':(context)=>IntroPage(),
+        '/login':(context)=>LoginPage(),
+        '/createAccount' : (context)=>CreateAccountPage(),
+        '/main' : (context)=>MainPage(),
+      },
     );
   }
 }

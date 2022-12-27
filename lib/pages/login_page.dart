@@ -42,6 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 20,
               ),
               TextFormField(
+                obscureText: true,
                 decoration: InputDecoration(
                   hintText: '비밀번호를 입력하세요.',
                   hintStyle: TextStyle(color: Colors.grey),
@@ -63,15 +64,15 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/main');
+                    },
                     child: Text('로그인'),
                   ),
-                  SizedBox(
-                    width: 20,
-                    height: 20,
-                  ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/createAccount');
+                    },
                     child: Text('회원가입'),
                   ),
                 ],
