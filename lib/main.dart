@@ -20,17 +20,22 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         primaryColorLight: Colors.white,
         textTheme: TextTheme(
-            headline1 : TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.bold, fontSize: 40, color: Colors.black ,),
-            bodyText1 : TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.normal, fontSize: 20, color: Colors.black),
-            button: TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.normal, fontSize: 20, color: Colors.white)
+            headline1 : TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.bold, fontSize: 30, color: Colors.black ,
+                shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(3.0, 3.0), blurRadius: 10.0, color: Color.fromRGBO(255, 255, 255, 0.55)
+                  )
+                ] ),
+            bodyText1 : TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.normal, fontSize: 18, color: Colors.black),
+            button: TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.normal, fontSize: 15, color: Colors.white)
         ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           shadowColor: Colors.white38,
           iconTheme: IconThemeData(color: Colors.black54),
           centerTitle: true,
-          elevation: 2,
-          titleTextStyle: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 22),
+          elevation: 5,
+          titleTextStyle: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 15),
         ),
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(

@@ -29,9 +29,13 @@ class IntroPage extends StatelessWidget {
                 ),
                 Center(
                   child: SizedBox(
-                    width: 200,
-                    height: 45,
+                    width: 250,
+                    height: 50,
                     child: TextButton(
+                      style: TextButton.styleFrom(
+                        elevation: 10,
+                        shadowColor: Colors.cyanAccent
+                      ),
                       child: Text(
                         '로그인하기',
                         style: Theme.of(context).textTheme.button,
