@@ -6,13 +6,26 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+              child: TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/onboarding');
+                  },
+                  child: Text('어플 소개 보기')))
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor:Colors.grey,
+        unselectedItemColor: Colors.grey,
         selectedItemColor: Theme.of(context).primaryColor,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home',),
-          BottomNavigationBarItem(icon: Icon(Icons.list), label : 'List'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.list), label: 'List'),
           BottomNavigationBarItem(icon: Icon(Icons.add_task), label: 'Add'),
           BottomNavigationBarItem(icon: Icon(Icons.more), label: 'More'),
         ],

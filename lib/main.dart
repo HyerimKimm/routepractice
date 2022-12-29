@@ -3,6 +3,7 @@ import 'package:routepractice/pages/create_account_page.dart';
 import 'package:routepractice/pages/intro_page.dart';
 import 'package:routepractice/pages/login_page.dart';
 import 'package:routepractice/pages/main_page.dart';
+import 'package:routepractice/pages/onboarding_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,8 +27,8 @@ class MyApp extends StatelessWidget {
                     offset: Offset(3.0, 3.0), blurRadius: 10.0, color: Color.fromRGBO(255, 255, 255, 0.55)
                   )
                 ] ),
-            bodyText1 : TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.normal, fontSize: 18, color: Colors.black),
-            button: TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.normal, fontSize: 15, color: Colors.white)
+            bodyText1 : TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.normal, fontSize: 10, color: Colors.black),
+            button: TextStyle(fontFamily: 'NotoSansKR', fontWeight: FontWeight.normal, fontSize: 12, color: Colors.white)
         ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
@@ -35,13 +36,15 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(color: Colors.black54),
           centerTitle: true,
           elevation: 5,
-          titleTextStyle: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 15),
+          titleTextStyle: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 13),
         ),
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,
             backgroundColor: Colors.blue,
-            minimumSize: Size(100,20)
+            elevation: 10,
+            shadowColor: Colors.white,
+            minimumSize: Size(100,15),
           ),
         )
       ),
@@ -51,6 +54,7 @@ class MyApp extends StatelessWidget {
         '/login':(context)=>LoginPage(),
         '/createAccount' : (context)=>CreateAccountPage(),
         '/main' : (context)=>MainPage(),
+        '/onboarding':(context)=>OnBoardingPage(),
       },
     );
   }

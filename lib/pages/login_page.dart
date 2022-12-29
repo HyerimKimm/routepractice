@@ -25,9 +25,10 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TextFormField(
+                style: Theme.of(context).textTheme.bodyText1,
                 decoration: InputDecoration(
                     hintText: '아이디를 입력하세요.',
-                    hintStyle: TextStyle(color: Colors.grey),
+                    hintStyle: TextStyle(color: Colors.grey, fontSize: 10),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                             color: Color.fromRGBO(200, 200, 200, 1))),
@@ -43,9 +44,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
               TextFormField(
                 obscureText: true,
+                style: Theme.of(context).textTheme.bodyText1,
                 decoration: InputDecoration(
                   hintText: '비밀번호를 입력하세요.',
-                  hintStyle: TextStyle(color: Colors.grey),
+                  hintStyle: TextStyle(color: Colors.grey, fontSize: 10),
                   enabledBorder: OutlineInputBorder(
                       borderSide:
                           BorderSide(color: Color.fromRGBO(200, 200, 200, 1))),
@@ -64,12 +66,14 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   TextButton(
+                    style: Theme.of(context).textButtonTheme.style,
                     onPressed: () {
                       Navigator.pushNamed(context, '/main');
                     },
                     child: Text('로그인'),
                   ),
                   TextButton(
+                    style: Theme.of(context).textButtonTheme.style,
                     onPressed: () {
                       Navigator.pushNamed(context, '/createAccount');
                     },
