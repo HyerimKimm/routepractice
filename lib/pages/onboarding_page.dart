@@ -14,7 +14,13 @@ class OnBoardingPage extends StatelessWidget {
                 title: '함께 성장',
                 body: '사랑하는 사람과 목표를 함께해요',
                 image: Image.asset('assets/images/onboarding/friendship.png'),
-                decoration: PageDecoration(),
+                decoration: PageDecoration(
+                  titleTextStyle: TextStyle(
+                    fontFamily: Theme.of(context).textTheme.subtitle1?.fontFamily,
+                    fontWeight: Theme.of(context).textTheme.subtitle1?.fontWeight,
+                    fontSize: Theme.of(context).textTheme.subtitle1?.fontSize,
+                  ),
+                ),
             ),
             PageViewModel(
                 title: '즐거움',
@@ -34,6 +40,4 @@ class OnBoardingPage extends StatelessWidget {
       ),
     );
   }
-
-
 }

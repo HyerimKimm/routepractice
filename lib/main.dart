@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white,
           primarySwatch: Colors.blue,
           primaryColorLight: Colors.white,
-          textTheme: const TextTheme(
+          textTheme: TextTheme(
               headline1: TextStyle(
                   fontFamily: 'NotoSansKR',
                   fontWeight: FontWeight.bold,
@@ -32,11 +32,24 @@ class MyApp extends StatelessWidget {
                         blurRadius: 10.0,
                         color: Color.fromRGBO(255, 255, 255, 0.55))
                   ]),
+              subtitle1: TextStyle(
+                fontFamily: 'NotoSansKR',
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.black
+              ),
+              subtitle2: TextStyle(
+                  fontFamily: 'NotoSansKR',
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: Colors.black26
+              ),
               bodyText1: TextStyle(
                   fontFamily: 'NotoSansKR',
                   fontWeight: FontWeight.normal,
                   fontSize: 10,
-                  color: Colors.black),
+                  color: Colors.black
+              ),
               button: TextStyle(
                   fontFamily: 'NotoSansKR',
                   fontWeight: FontWeight.normal,
