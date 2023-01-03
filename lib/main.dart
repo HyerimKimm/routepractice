@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white,
           primarySwatch: Colors.blue,
           primaryColorLight: Colors.white,
-          textTheme: TextTheme(
+          textTheme: const TextTheme(
               headline1: TextStyle(
                   fontFamily: 'NotoSansKR',
                   fontWeight: FontWeight.bold,
