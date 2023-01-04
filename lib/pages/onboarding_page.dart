@@ -66,7 +66,7 @@ class OnBoardingPage extends StatelessWidget {
 
   PageDecoration getPageDecoration() {
     return const PageDecoration(
-      pageColor: Color.fromRGBO(255, 174, 201, 1),
+      pageColor: Color.fromRGBO(255, 220, 240, 1),
       titleTextStyle: TextStyle(
           fontFamily: 'NotoSansKR', fontWeight: FontWeight.bold, fontSize: 20),
       imagePadding: EdgeInsets.only(top: 50),

@@ -9,7 +9,9 @@ class MainPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(),
+          Center(
+              child: Image.asset('assets/images/orangemushroom.jpg')
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

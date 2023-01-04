@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                   TextButton(
                     style: Theme.of(context).textButtonTheme.style,
                     onPressed: () {
-                      Navigator.pushNamed(context, '/main');
+                      Navigator.pushReplacementNamed(context, '/main');
                     },
                     child: Text('로그인'),
                   ),
