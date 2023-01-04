@@ -9,12 +9,7 @@ class MainPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-              child: TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/onboarding');
-                  },
-                  child: Text('어플 소개 보기')))
+          Center(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
