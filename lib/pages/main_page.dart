@@ -10,7 +10,7 @@ class MainPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-              child: Image.asset('assets/images/orangemushroom.jpg')
+              child: Image.asset('assets/images/orangemushroom.png')
           ),
         ],
       ),
