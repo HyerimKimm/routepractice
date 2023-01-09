@@ -10,6 +10,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController idController = TextEditingController();
   TextEditingController pwController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Form(
+                  key: _formKey,
                     child: Theme(
                         data: ThemeData(
                             primaryColor: Colors.blue,
@@ -47,13 +49,15 @@ class _LoginPageState extends State<LoginPage> {
                           padding: EdgeInsets.all(40.0),
                           child: Column(
                             children: [
-                              TextField(
+                              TextFormField(
+                                key: ValueKey(1),
                                 controller: idController,
                                 decoration:
                                     InputDecoration(labelText: '아이디를 입력하세요.'),
                                 keyboardType: TextInputType.emailAddress,
                               ),
-                              TextField(
+                              TextFormField(
+                                key: ValueKey(2),
                                 controller: pwController,
                                 decoration:
                                     InputDecoration(labelText: '비밀번호를 입력하세요.'),

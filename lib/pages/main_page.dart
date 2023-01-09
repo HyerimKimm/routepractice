@@ -10,7 +10,7 @@ class MainPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-              child: Image.asset('assets/images/orangemushroom.png')
+              child: Image.asset('assets/images/orangemushroom.png'),
           ),
         ],
       ),
@@ -22,7 +22,7 @@ class MainPage extends StatelessWidget {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.list), label: 'List'),
+          BottomNavigationBarItem(icon: Icon(Icons.list), label: 'List',),
           BottomNavigationBarItem(icon: Icon(Icons.add_task), label: 'Add'),
           BottomNavigationBarItem(icon: Icon(Icons.more), label: 'More'),
         ],

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "112776024345",
+    "project_id": "couple-diary-app-5ca58",
+    "storage_bucket": "couple-diary-app-5ca58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112776024345:android:2fef10acc9f6a32818f588",
+        "android_client_info": {
+          "package_name": "com.example.routepractice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "112776024345-h2s1bq3dkg2spu1s9bggfst5km52qo71.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuZ4041I9cFFSnAF25z_bk-UeYpJp2OpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "112776024345-h2s1bq3dkg2spu1s9bggfst5km52qo71.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
