@@ -3,8 +3,11 @@ import 'package:routepractice/pages/create_account_page.dart';
 import 'package:routepractice/pages/login_page.dart';
 import 'package:routepractice/pages/main_page.dart';
 import 'package:routepractice/pages/onboarding_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -49,6 +52,12 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                   fontSize: 10,
                   color: Colors.black
+              ),
+              caption: TextStyle(
+                  fontFamily: 'NotoSansKR',
+                  fontWeight: FontWeight.normal,
+                  fontSize: 8,
+                  color: Colors.black,
               ),
               button: TextStyle(
                   fontFamily: 'NotoSansKR',
