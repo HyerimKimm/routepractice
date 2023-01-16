@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:routepractice/utils/mybutton.dart';
 
 class CreateAccountPage extends StatefulWidget {
   const CreateAccountPage({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
   final _formkey = GlobalKey<FormState>();
   String userName = '';
-  String userId = '';
+  String userEmail = '';
   String userPassword = '';
 
   void _tryValidation() {
@@ -59,7 +60,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(40.0),
                       child: SingleChildScrollView(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           bottom: 20,
                         ),
                         child: Column(
@@ -69,7 +70,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                               width: 250,
                               height: 45,
                               child: TextFormField(
-                                key: ValueKey('id'),
+                                key: ValueKey('name'),
+                                style: Theme.of(context).textTheme.bodyText1,
                                 validator: (value) {
                                   if (value!.isEmpty) return '이름을 입력해 주세요!';
                                 },
@@ -80,7 +82,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                   userName = value;
                                 },
                                 decoration: const InputDecoration(
-                                    hintText: '이름을 입력하세요.'),
+                                    hintText: '이름을 입력하세요.', hintStyle: TextStyle(fontSize: 10)),
                               ),
                             ),
                             const SizedBox(
@@ -90,20 +92,21 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                               width: 250,
                               height: 45,
                               child: TextFormField(
-                                key: ValueKey('password'),
+                                key: ValueKey('id'),
+                                style: Theme.of(context).textTheme.bodyText1,
                                 validator: (value) {
-                                  if (value!.isEmpty || value.length < 4) {
-                                    return '아이디는 4자 이상이어야 합니다!';
+                                  if (value!.isEmpty) {
+                                    return '이메일을 입력해 주세요!';
                                   }
                                 },
                                 onSaved: (value) {
-                                  userId = value!;
+                                  userEmail = value!;
                                 },
                                 onChanged: (value) {
-                                  userId = value;
+                                  userEmail = value;
                                 },
                                 decoration:
-                                    InputDecoration(hintText: '아이디를 입력하세요.'),
+                                    const InputDecoration(hintText: '이메일을 입력하세요.', hintStyle: TextStyle(fontSize: 10)),
                               ),
                             ),
                             const SizedBox(
@@ -113,6 +116,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                               width: 250,
                               height: 45,
                               child: TextFormField(
+                                style: Theme.of(context).textTheme.bodyText1,
                                 obscureText: true,
                                 validator: (value) {
                                   if (value!.isEmpty || value.length < 6) {
@@ -126,42 +130,38 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                   userPassword = value;
                                 },
                                 decoration:
-                                    InputDecoration(hintText: '비밀번호를 입력하세요.'),
+                                    const InputDecoration(hintText: '비밀번호를 입력하세요.',hintStyle: TextStyle(fontSize: 10)),
                               ),
                             ),
                             const SizedBox(
                               height: 30,
                             ),
-                            TextButton(
-                              style: TextButton.styleFrom(
-                                backgroundColor: Colors.blue,
-                                minimumSize: const Size(200.0, 40.0),
-                              ),
-                              child: const Text('가입하기',
-                                  style: TextStyle(color: Colors.white)),
-                              onPressed: () async {
-                                _tryValidation();
+                            MyButton(
+                                text: const Text('가입하기',
+                                style: TextStyle(color: Colors.white)),
+                                onPressed:() async {
+                                  _tryValidation();
 
-                                try {
-                                  final newUser = await _authentication
-                                      .createUserWithEmailAndPassword(
-                                    email: userId,
-                                    password: userPassword,
-                                  );
-
-                                  if(newUser.user != null){
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(content: Text('가입 성공')),
+                                  try {
+                                    final newUser = await _authentication
+                                        .createUserWithEmailAndPassword(
+                                      email: userEmail,
+                                      password: userPassword,
                                     );
-                                    Navigator.pop(context);
+
+                                    if(newUser.user != null){
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(content: Text('가입 성공')),
+                                      );
+                                      Navigator.pop(context);
+                                    }
+                                  } catch (e) {
+                                    print(e);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(content: Text('사용할 수 없는 가입 정보입니다.')));
                                   }
-                                } catch (e) {
-                                  print(e);
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(content: Text('error')));
-                                }
-                              },
-                            ),
+                                },
+                                widthSize: 200.0),
                           ],
                         ),
                       ),

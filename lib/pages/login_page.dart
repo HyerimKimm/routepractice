@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../utils/mybutton.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -8,8 +11,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController idController = TextEditingController();
+  final _authentication = FirebaseAuth.instance;
+  TextEditingController emailController = TextEditingController();
   TextEditingController pwController = TextEditingController();
+
+  String userEmail = '';
+  String userPassword = '';
 
   @override
   Widget build(BuildContext context) {
@@ -36,47 +43,59 @@ class _LoginPageState extends State<LoginPage> {
                 Form(
                     child: Theme(
                         data: ThemeData(
-                            primaryColor: Colors.blue,
-                            inputDecorationTheme: const InputDecorationTheme(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.blue,
-                                  width: 2.0,
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black26),
-                              ),
-                              labelStyle: TextStyle(
+                          primaryColor: Colors.blue,
+                          inputDecorationTheme: const InputDecorationTheme(
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
                                 color: Colors.blue,
-                                fontSize: 10.0,
+                                width: 2.0,
                               ),
                             ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black26),
+                            ),
+                            labelStyle: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 10.0,
+                            ),
                           ),
+                        ),
                         child: Container(
                           padding: EdgeInsets.all(40.0),
                           child: Column(
                             children: [
-                                SizedBox(
-                                  width: 250,
-                                  height: 45,
-                                  child: TextFormField(
-                                    controller: idController,
-                                    decoration:
-                                        InputDecoration(labelText: '아이디를 입력하세요.',),
-                                    keyboardType: TextInputType.emailAddress,
-                                  ),
-                                ),
-                              SizedBox(height: 10,),
                               SizedBox(
                                 width: 250,
                                 height: 45,
                                 child: TextFormField(
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                  controller: emailController,
+                                  decoration: InputDecoration(
+                                      labelText: '이메일을 입력하세요.',
+                                      labelStyle: TextStyle(fontSize: 10)),
+                                  keyboardType: TextInputType.emailAddress,
+                                  onChanged: (value) {
+                                    userEmail = value;
+                                  },
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              SizedBox(
+                                width: 250,
+                                height: 45,
+                                child: TextFormField(
+                                  style: Theme.of(context).textTheme.bodyText1,
                                   controller: pwController,
-                                  decoration:
-                                      InputDecoration(labelText: '비밀번호를 입력하세요.'),
+                                  decoration: InputDecoration(
+                                      labelText: '비밀번호를 입력하세요.',
+                                      labelStyle: TextStyle(fontSize: 10)),
                                   obscureText: true,
                                   keyboardType: TextInputType.text,
+                                  onChanged: (value) {
+                                    userPassword = value;
+                                  },
                                 ),
                               ),
                               const SizedBox(
@@ -85,46 +104,49 @@ class _LoginPageState extends State<LoginPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  TextButton(
-                                    style: TextButton.styleFrom(
-                                        backgroundColor: Colors.blue,
-                                        minimumSize: Size(120.0, 40.0)),
-                                    child: const Text(
-                                      '로그인',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    onPressed: () {
-                                      if (idController.text == 'couple' &&
-                                          pwController.text == '1234') {
-                                        //id, pw 맞음
-                                        showSnackBar(context, '환영합니다!');
-                                        Navigator.pushReplacementNamed(
-                                            context, '/main');
-                                      } else if (idController.text !=
-                                              'couple' ||
-                                          pwController.text != pwController) {
-                                        showSnackBar(context, '로그인 정보를 확인하세요!');
-                                      } else {
-                                        //error
-                                        showSnackBar(context, 'error');
-                                      }
-                                    },
-                                  ),
-                                  SizedBox(
+                                  MyButton(
+                                      text: Text(
+                                        '로그인',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      onPressed: () async {
+                                        if (emailController.text.isEmpty) {
+                                          showSnackBar(context, '이메일을 입력해주세요!');
+                                        } else if (pwController.text.isEmpty) {
+                                          showSnackBar(
+                                              context, '비밀번호를 입력해주세요!');
+                                        } else {
+                                          try {
+                                            final newUser =
+                                                await _authentication
+                                                    .signInWithEmailAndPassword(
+                                                        email: userEmail,
+                                                        password: userPassword);
+                                            if (newUser.user != null) {
+                                              final userEmail =
+                                                  newUser.user!.email;
+                                              showSnackBar(context,
+                                                  '${userEmail}님 안녕하세요!');
+                                              Navigator.pushReplacementNamed(
+                                                  context, '/main');
+                                            }
+                                          } catch (e) {
+                                            showSnackBar(
+                                                context, '이메일, 비밀번호를 확인해주세요!');
+                                          }
+                                        }
+                                      },
+                                      widthSize: 120.0),
+                                  const SizedBox(
                                     width: 10,
                                   ),
-                                  TextButton(
-                                    style: TextButton.styleFrom(
-                                        backgroundColor: Colors.blue,
-                                        minimumSize: Size(120.0, 40.0)),
-                                    child: const Text(
-                                      '회원가입',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
+                                  MyButton(
+                                    text: Text('회원가입'),
                                     onPressed: () {
                                       Navigator.pushNamed(
                                           context, '/createAccount');
                                     },
+                                    widthSize: 120.0,
                                   ),
                                 ],
                               ),
@@ -143,11 +165,11 @@ class _LoginPageState extends State<LoginPage> {
 void showSnackBar(BuildContext context, String text) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      content: Text(
-        text,
-        textAlign: TextAlign.center,
-      ),
-      duration: Duration(seconds: 2),
+      content: Text(text,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+              fontSize: 8, fontFamily: 'NotoSansKR', color: Colors.white)),
+      duration: const Duration(seconds: 2),
       backgroundColor: Colors.grey,
     ),
   );
